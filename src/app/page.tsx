@@ -1,101 +1,76 @@
+'use client'
+import Navbar from "@/components/navbar/page";
+import Header from "@/components/navbar/page";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-transparent py-4 px-8 flex justify-between items-center">
+      {/* Logo */}
+      <Link href="/" className="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          className="w-12 h-12 text-white"
+          fill="currentColor"
+        >
+          <text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fontFamily="'Silk Serif', serif"
+            fontSize="48"
+          >
+            RA
+          </text>
+        </svg>
+      </Link>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Desktop Navigation */}
+      <div className="space-x-6 hidden md:flex text-xl font-silk">
+        <Link href="/" className="text-white text-lg hover:text-gray-300 transition-colors">Services</Link>
+        <Link href="/" className="text-white text-lg hover:text-gray-300 transition-colors">Contact</Link>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <div className="md:hidden">
+        <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Drawer */}
+      {isOpen && (
+        <div className="absolute top-full left-0 w-full bg-black bg-opacity-90 text-white py-4 flex flex-col items-center space-y-4 md:hidden font-silk text-lg">
+          <Link href="/" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>Services</Link>
+          <Link href="/" className="hover:text-gray-300" onClick={() => setIsOpen(false)}>Contact</Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      )}
+    </nav>
+
+     <section className="relative h-screen w-full overflow-hidden">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src="https://player.vimeo.com/progressive_redirect/playback/1025013801/rendition/1080p/file.mp4?loc=external&log_user=0&signature=abf7e09e70ec948296cea5898126d725ab674c1f6f9401dd76c703bc0c8c7eb1"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+      <div className="relative z-10 flex items-center justify-center h-full bg-black/50">
+      
+            <h1 className="text-white text-4xl md:text-6xl font-thin font-silk">
+               Raman and Associates
+            </h1>
+
+      </div>
+    </section>
     </div>
   );
 }

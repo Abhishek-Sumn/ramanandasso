@@ -2,10 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #0a0a0a;
+    --foreground: #ededed;
 }
+
+@font-face {
+  font-family: "Silk Serif";
+  src: url("/fonts/SilkSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Silk Serif";
+  src: url("/fonts/SilkSerif-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Silk Serif";
+  src: url("/fonts/SilkSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
