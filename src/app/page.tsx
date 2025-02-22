@@ -1,7 +1,5 @@
 'use client'
-import Navbar from "@/components/navbar/page";
-import Header from "@/components/navbar/page";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
