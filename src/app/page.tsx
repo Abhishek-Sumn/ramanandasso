@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-  const contactRef = useRef(null);
+  const contactRef = useRef<HTMLDivElement | null>(null);
 
   const handleScrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
